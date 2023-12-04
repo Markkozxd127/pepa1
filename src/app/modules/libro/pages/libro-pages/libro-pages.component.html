@@ -1,0 +1,106 @@
+
+
+<div class="container">
+  <h2>Agregar RESERVA</h2>
+  <div class="card form-card">
+    <div class="card-body">
+      <form (submit)="agregarLibro()">
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="clase">Título:</label>
+              <input type="text" id="clase" [(ngModel)]="nuevoLibro.clase" name="clase" class="form-control"
+                required>
+            </div>
+          </div>
+        
+
+
+
+
+
+
+
+          <div class="col">
+            <div class="form-group">
+              <label for="autor">Autor:</label>
+              <select id="autor" [(ngModel)]="nuevoLibro.autor" name="autor" class="form-control" required>
+                <option value="0" disabled>Selecciona un autor</option>
+                <option *ngFor="let autor of autores" [value]="autor.id">{{ autor.dni }}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="editorial">Editorial:</label>
+              <select id="editorial" [(ngModel)]="nuevoLibro.editorial" name="editorial" class="form-control" required>
+                <option value="0" disabled>Selecciona una editorial</option>
+                <option *ngFor="let editorial of editoriales" [value]="editorial.id">{{ editorial.direccion }}
+                </option>
+              </select>
+            </div>
+          </div>
+         
+          <div class="col">
+            <div class="form-group">
+              <label for="categoria">Categoría:</label>
+              <select id="categoria" [(ngModel)]="nuevoLibro.categoria" name="categoria" class="form-control" required>
+                <option value="0" disabled>Selecciona una categoría</option>
+                <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombrehotel }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+
+          <div class="col">
+            <div class="form-group">
+              <label for="lector">Categoría:</label>
+              <select id="lector" [(ngModel)]="nuevoLibro.lector" name="lector" class="form-control" required>
+                <option value="0" disabled>Selecciona una categoría</option>
+                <option *ngFor="let lector of lectors" [value]="lector.id">{{ lector.fechasa }}</option>
+              </select>
+            </div>
+          </div>
+
+
+        </div>
+
+
+
+
+
+        <button type="submit" class="btn btn-primary">Agregar Libro</button>
+        <button type="button" class="btn btn-primary" (click)="editBook()">Editar Libro</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <h2>List of RESERVA</h2>
+  <div class="row">
+    <div *ngFor="let libro of libros" class="col-md-4">
+      <div class="card">
+        <div class="xxx">
+          <div class="card-body">
+            <h5 class="card-title">{{ libro.clase }}</h5>
+            <p class="card-text">
+              <strong>SUCURSAALES:</strong> {{ libro.autor.dni }}<br>
+              <strong>HOTEL:</strong> {{ libro.editorial.direccion }}<br>
+              <strong>VUELO:</strong> {{ libro.categoria.nombrehotel }}<br>
+              <strong>CLIENTE:</strong> {{ libro.lector.fechasa }}<br>
+
+            </p>
+            <button class="btn btn-danger" (click)="eliminarLibro(libro.id)">Eliminar</button>
+            <button class="btn btn-primary" (click)="cargarDatosLibroParaEdicion(libro.id)">Editar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

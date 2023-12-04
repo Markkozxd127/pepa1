@@ -1,0 +1,106 @@
+<body>
+    <div class="container">
+        <h2>VUELO</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>NOMBRES</th>
+                        <th>TELEFONO</th>
+                        <th>DIRECCION</th>
+                        <th>CODIGO POSTAL</th>
+                        <th>OBSERVACIONES</th>
+                        <th>OBSERVACIONES</th>
+                        <th>OBSERVACIONES</th>
+
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let lector of lector; let i = index">
+                        <tr (click)="seleccionarLector(lector)">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ lector.fechasa }}</td>
+                            <td>{{ lector.horasa }}</td>
+                            <td>{{ lector.fechallega }}</td>
+                            <td>{{ lector.horalle }}</td>
+                            <td>{{ lector.origen }}</td>
+                            <td>{{ lector.destino }}</td>
+                            <td>{{ lector.numeropla }}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm"
+                                    (click)="eliminarLector(lector.id)">Eliminar</button>
+                            </td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div> 
+    <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h2>CrearVUELO</h2>
+                        <label for="nuevorNombre">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.fechasa" id="nuevorNombre" class="form-control" />
+                        <label for="nuevoApellidosAutor">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.horasa" id="nuevoApellidosAutor" class="form-control" />
+                        <label for="nuevoFechaNacimiento">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.fechallega" id="nuevoFechaNacimiento" class="form-control" />
+                        <label for="nuevoLugarNacimiento">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.horalle" id="nuevoLugarNacimiento" class="form-control" />
+                        <label for="nuevoGenero">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.origen" id="nuevoGenero" class="form-control" />
+
+
+                        <label for="nuevoLugarNacimientoq">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.destino" id="nuevoLugarNacimientoq" class="form-control" />
+                        <label for="nuevoGenerow">DATOS DE VUELO:</label>
+                        <input [(ngModel)]="nuevoLector.numeropla" id="nuevoGenerow" class="form-control" />
+
+
+
+                        <button class="btn btn-success" (click)="crearLector()">Crear</button>
+                    </div>
+                </div>
+                <!-- XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX -->
+          </div>
+            <div class="col-md-6">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h2>Editar VUELO</h2>
+                        <div *ngIf="lectorSeleccionado">
+                            <label for="nombreautor">DATOS DE VUELO:</label>
+                            <input [(ngModel)]="lectorSeleccionado.fechasa" id="nombreautor" class="form-control" />
+                            <label for="apellidosautor">TDATOS DE VUELO:</label>
+                            <input [(ngModel)]="lectorSeleccionado.horasa" id="apellidosautor"
+                                class="form-control" />
+                            <label for="fecha_nacimiento">DATOS DE VUELO</label>
+                            <input [(ngModel)]="lectorSeleccionado.fechallega" id="fecha_nacimiento"
+                                class="form-control" />
+                            <label for="lugar_nacimiento">CDATOS DE VUELO:</label>
+                            <input [(ngModel)]="lectorSeleccionado.horalle" id="lugar_nacimiento"
+                                class="form-control" />
+                            <label for="genero">ODATOS DE VUELOr:</label>
+                            <input [(ngModel)]="lectorSeleccionado.origen" id="genero" class="form-control" />
+
+                            <label for="lugar_nacimientoq">CDATOS DE VUELO:</label>
+                            <input [(ngModel)]="lectorSeleccionado.destino" id="lugar_nacimientoq"
+                                class="form-control" />
+                            <label for="generow">Obsevaciones de  Lector:</label>
+                            <input [(ngModel)]="lectorSeleccionado.numeropla" id="generow" class="form-control" />
+
+                            <button class="btn btn-primary" (click)="actualizarLector()">Actualizar</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

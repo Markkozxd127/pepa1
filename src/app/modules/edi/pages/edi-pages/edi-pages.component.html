@@ -1,0 +1,76 @@
+
+
+<body>
+  <div class="container">
+    <h2>SUCURSAL</h2>
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>DIRECCION </th>
+          <th>LOCALIDAD</th>
+          <th>PROVINCIA</th>
+          <th>TELEFONO</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let editorial of editorial; let i = index">
+          <tr (click)="seleccionarEditorial(editorial)">
+            <td>{{ i + 1 }}</td>
+            <td>{{ editorial.direccion }}</td>
+            <td>{{ editorial.localidad }}</td>           
+            <td>{{ editorial.provincia }}</td>
+            <td><a href="{{ editorial.telefono }}" target="_blank">{{ editorial.telefono }}</a></td>
+            <td>
+              <button class="btn btn-danger btn-sm" (click)="eliminarEditorial(editorial.id)">Eliminar</button>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card card-custom">
+        <div class="card-body">
+          <h2>Crear Nuevo SUCURSAL</h2>
+          <label for="nombreeditorial">DIRECCION:</label>
+          <input [(ngModel)]="nuevoEditorial.direccion" id="nombreeditorial" class="form-control" />
+          <label for="nuevoApellidosAutor">LOCALIDAD:</label>
+          <input [(ngModel)]="nuevoEditorial.localidad" id="ano" class="form-control" />
+          <label for="nuevoFechaNacimiento">PROVINCIA:</label>
+          <input [(ngModel)]="nuevoEditorial.provincia" id="descripcion" class="form-control" />
+          <label for="nuevoLugarNacimiento">TELEFONO:</label>
+          <input [(ngModel)]="nuevoEditorial.telefono" id="sitioweb" class="form-control" />
+          <button class="btn btn-success" (click)="crearEditorial()">Crear</button>
+        </div>
+      </div>
+
+
+
+</div>
+<div class="col-md-6">
+<div class="card card-custom">
+  <div class="card-body">
+    <h2>Editar SUCURSAL</h2>
+    <div *ngIf="editorialSeleccionado">
+      <label for="nombreeditorial">DIRECCION:</label>
+      <input [(ngModel)]="editorialSeleccionado.direccion" id="nombreeditorial" class="form-control" />
+      <label for="ano">LOCALIDAD:</label>
+      <input [(ngModel)]="editorialSeleccionado.localidad" id="ano" class="form-control" />
+      <label for="descripcion">PROVINCIA:</label>
+      <input [(ngModel)]="editorialSeleccionado.provincia" id="descripcion" class="form-control" />
+      <label for="fecha_nacimiento">TELEFONO:</label>
+      <input [(ngModel)]="editorialSeleccionado.telefono" id="sitioweb" class="form-control" />
+      <button class="btn btn-primary" (click)="actualizarEditorial()">Actualizar</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
